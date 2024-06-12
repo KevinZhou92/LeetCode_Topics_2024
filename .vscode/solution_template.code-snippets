@@ -1,0 +1,15 @@
+{
+	"solution_template": {
+	"prefix": "lc",
+	"body": [
+	"\"\"\"",
+	"Solution 1:",
+	"",
+	"",
+	"Time Complexity: O(n)",
+	"Space complexity : O(n)",
+	"\"\"\""
+	],
+	"description": "solution_template"
+	}
+}
