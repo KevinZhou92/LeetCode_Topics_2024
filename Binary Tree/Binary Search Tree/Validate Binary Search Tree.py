@@ -36,3 +36,35 @@ class Solution:
         valid_right = self.valid_BST(root.right, root.val, max_val)
         
         return valid_left and valid_right
+
+"""
+Solution 2:
+
+Iterative Solution. Keep track of previous node in inorder traversal and check if previous value is 
+greater than the current value
+
+BST in-order traversal is always ascending order
+
+Time Complexity: O(H)
+Space complexity : O(1)
+"""
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return False
+        
+        prev = None
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if prev and prev.val >= root.val:
+                return False
+            prev = root
+            root = prev.right
+        
+        return True
+            
+            
