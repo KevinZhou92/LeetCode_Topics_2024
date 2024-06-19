@@ -6,8 +6,8 @@
 	"Solution 1:",
 	"",
 	"",
-	"Time Complexity: O(n)",
-	"Space complexity : O(n)",
+	"Time Complexity: O()",
+	"Space complexity : O()",
 	"\"\"\""
 	],
 	"description": "solution_template"
