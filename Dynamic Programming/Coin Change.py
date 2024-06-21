@@ -38,6 +38,10 @@ Solution 2:
 DFS + Memorization
 !Memory Limit Exceeded!
 
+This is a bad solution, since we are not using memorization correctly.
+We should always break down the original problem into sub problems and subproblems should always
+be a subset of original problem!!!
+
 Time Complexity: O()
 Space complexity : O()
 """
