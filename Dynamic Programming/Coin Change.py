@@ -75,3 +75,29 @@ class Solution:
         memories[(amount, count)] = min_count
 
         return min_count
+
+
+"""
+Solution 3:
+
+Dynamic Programming
+
+Time Complexity: O(n)
+Space complexity : O(n)
+"""
+
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        if not coins:
+            return -1
+
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
+        for val in range(1, amount + 1):
+            for coin in coins:
+                if val - coin < 0:
+                    continue
+                dp[val] = min(dp[val], dp[val - coin] + 1)
+
+        return dp[amount] if dp[amount] != amount + 1 else -1
