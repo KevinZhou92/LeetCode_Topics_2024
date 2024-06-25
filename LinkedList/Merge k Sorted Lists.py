@@ -45,3 +45,54 @@ class Solution:
             
         return dummy.next
         
+"""
+Solution 2:
+
+Bottom-up Merge Sort
+
+
+Time Complexity: O(NlogK), k is the # of lists
+Space complexity : O(1)
+"""
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        if not lists:
+            return None
+        
+        count = len(lists)
+        interval = 1
+        while interval < count:
+            for i in range(0, count - interval, interval * 2):
+                lists[i] = self.merge_two_lists(lists[i], lists[i + interval])
+            interval *= 2
+        
+        return lists[0]
+
+    def merge_two_lists(self, l1, l2):
+        dummy = ListNode(-1)
+        head = dummy
+        while l1 and l2:
+            if l1.val < l2.val:
+                head.next = l1
+                l1 = l1.next
+            else:
+                head.next = l2
+                l2 = l2.next
+            head = head.next
+
+        while l1:
+            head.next = l1
+            l1 = l1.next
+            head = head.next
+        
+        while l2:
+            head.next = l2
+            l2 = l2.next
+            head = head.next
+        
+        return dummy.next
