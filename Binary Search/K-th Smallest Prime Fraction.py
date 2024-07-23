@@ -4,7 +4,10 @@ Solution 1:
 Priority Queue
 
 It's essentially merge k sorted list, here we don't care about the order between previous k
-elements, we just care about what is Kth element.
+elements, we just care about what is Kth element. 
+
+PQ stores the smallest element for each row, which guarantes every selection we are selecting
+the minimum value out of all rows.
 
 Time Complexity: O(nlogn + klogn)
 Space complexity : O(n)
