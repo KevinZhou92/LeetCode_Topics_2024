@@ -31,3 +31,47 @@ class Solution:
 
         _, index1, index2 = heapq.heappop(pq)
         return [arr[index1], arr[index2]]
+
+"""
+Solution 1:
+
+Binary Search
+
+Time Complexity: O(Nlog1)
+Space complexity : O()
+"""
+class Solution:
+    def kthSmallestPrimeFraction(self, arr: List[int], k: int) -> List[int]:
+        start, end = 0, 1
+        while start < end:
+            mid = start + (end - start) / 2
+            cnt, res = self.findCount(arr, mid)
+            if cnt == k:
+                return res
+            elif cnt > k:
+                end = mid
+            else:
+                start = mid
+        
+        return []
+    
+    def findCount(self, arr, target):
+        curMax = 0
+        numerator, denominator = 0, 0
+        r = 1
+        cnt = 0
+        for l in range(len(arr) - 1):
+            while r < len(arr) and arr[l] >= target * arr[r]:
+                r += 1
+                        
+            cnt += (len(arr) - r)
+
+            if r == len(arr):
+                break
+
+            if arr[l] / arr[r] > curMax:
+                numerator = l
+                denominator = r
+                curMax = arr[l] / arr[r]
+        
+        return cnt, [arr[numerator] , arr[denominator]]
